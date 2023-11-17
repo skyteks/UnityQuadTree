@@ -40,7 +40,15 @@ public class ExampleQuadTreeHolder : MonoBehaviour
 #if UNITY_EDITOR
         Vector3 pos = transform.position;
         pos.y = 0f;
-        quadTree?.DebugDraw(pos, Color.red);
+        if (quadTree != null)
+        {
+            quadTree.DebugDraw(pos, Color.red);
+        }
+        else
+        {
+            UnityEditor.Handles.color = Color.red;
+            UnityEditor.Handles.DrawWireCube(transform.position, new Vector3(size.x, 0f, size.y));
+        }
 #endif
     }
 }

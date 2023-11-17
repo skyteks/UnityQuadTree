@@ -35,12 +35,10 @@ namespace QuadTree
         }
 
 #if UNITY_EDITOR
-        private Vector3 BoxPos => new Vector3(BoundingBox.position.x, 0f, BoundingBox.position.y);
-        private Vector3 BoxSize => new Vector3(BoundingBox.size.x, 0f, BoundingBox.size.y);
         protected void OnDrawGizmosSelected()
         {
             UnityEditor.Handles.color = Color.cyan;
-            UnityEditor.Handles.DrawWireCube(BoxPos, BoxSize);
+            UnityEditor.Handles.DrawWireCube(transform.position, new Vector3(size.x, 0f, size.y));
         }
 #endif
     }

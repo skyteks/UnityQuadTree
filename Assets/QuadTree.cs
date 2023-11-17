@@ -28,7 +28,7 @@ namespace QuadTree
         public int ObjectCount => rootNode.ObjectCount;
 #endif
 
-        public QuadTree(Rect initialBounds, int capacity, int maxObjectsPerNode, int maxTreeLevels ,IObjectPool<Node> objectsPool = null)
+        public QuadTree(Rect initialBounds, int capacity, int maxObjectsPerNode, int maxTreeLevels, IObjectPool<Node> objectsPool = null)
         {
             maxObjects = maxObjectsPerNode;
             maxLevels = maxTreeLevels;
@@ -53,7 +53,14 @@ namespace QuadTree
             }
         }
 
-        public bool Remove(T obj) => nodeDict[obj].RemoveObject(obj);
+        public bool Remove(T obj)
+        {
+            if (nodeDict.TryGetValue(obj, out Node node))
+            {
+                return node.RemoveObject(obj);
+            }
+            return false;
+        }
 
         public void Clear() => rootNode.Clear();
 
@@ -287,18 +294,20 @@ namespace QuadTree
                 if (removed)
                 {
                     host.nodeDict.Remove(obj);
-                    return true;
                 }
 
                 if (nodes[0] != null)
                 {
-                    // If there are child nodes, attempt to remove the object from them
-                    for (int i = 0; i < 4; i++)
+                    if (!removed)
                     {
-                        if (nodes[i].RemoveObject(obj))
+                        // If there are child nodes, attempt to remove the object from them
+                        for (int i = 0; i < 4; i++)
                         {
-                            removed = true; // The object was removed from a child node
-                            break;
+                            if (nodes[i].RemoveObject(obj))
+                            {
+                                removed = true; // The object was removed from a child node
+                                break;
+                            }
                         }
                     }
 

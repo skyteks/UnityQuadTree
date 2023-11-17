@@ -155,7 +155,7 @@ MonoBehaviour:
   objectCapacity: 100000
   maxObjectsPerNode: 10
   maxTreeLevels: 10
-  size: {x: 10, y: 10}
+  size: {x: 1, y: 1}
   OBJS: 0
   NODES: 0
 --- !u!4 &344850782
@@ -184,7 +184,6 @@ GameObject:
   - component: {fileID: 529413049}
   - component: {fileID: 529413048}
   - component: {fileID: 529413047}
-  - component: {fileID: 529413046}
   - component: {fileID: 529413045}
   m_Layer: 0
   m_Name: Cube
@@ -206,27 +205,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: {x: 1, y: 1}
---- !u!65 &529413046
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 529413044}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &529413047
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -234,7 +212,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 529413044}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -286,8 +264,8 @@ Transform:
   m_GameObject: {fileID: 529413044}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 0.001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -484,5 +462,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 963194228}
   - {fileID: 705507995}
-  - {fileID: 529413049}
   - {fileID: 344850782}
+  - {fileID: 529413049}
